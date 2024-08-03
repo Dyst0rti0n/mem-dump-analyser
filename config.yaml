@@ -1,0 +1,7 @@
+interval: 10s
+duration: 1m
+profile: heap
+profileFile: memprofile.prof
+logFile: analyzer.log
+username: admin
+password: password

@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Memory Dump Analyzer Dashboard</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+        }
+        h1 {
+            color: #333;
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 20px;
+        }
+        th, td {
+            border: 1px solid #ccc;
+            padding: 8px;
+            text-align: left;
+        }
+        th {
+            background-color: #f2f2f2;
+        }
+    </style>
+    <script>
+        function fetchStats() {
+            fetch('/stats')
+                .then(response => response.json())
+                .then(data => {
+                    document.getElementById('Alloc').innerText = data.Alloc;
+                    document.getElementById('TotalAlloc').innerText = data.TotalAlloc;
+                    document.getElementById('Sys').innerText = data.Sys;
+                    document.getElementById('Lookups').innerText = data.Lookups;
+                    document.getElementById('Mallocs').innerText = data.Mallocs;
+                    document.getElementById('Frees').innerText = data.Frees;
+                    document.getElementById('HeapAlloc').innerText = data.HeapAlloc;
+                    document.getElementById('HeapSys').innerText = data.HeapSys;
+                    document.getElementById('HeapIdle').innerText = data.HeapIdle;
+                    document.getElementById('HeapInuse').innerText = data.HeapInuse;
+                    document.getElementById('HeapReleased').innerText = data.HeapReleased;
+                    document.getElementById('HeapObjects').innerText = data.HeapObjects;
+                    document.getElementById('StackInuse').innerText = data.StackInuse;
+                    document.getElementById('StackSys').innerText = data.StackSys;
+                    document.getElementById('MSpanInuse').innerText = data.MSpanInuse;
+                    document.getElementById('MSpanSys').innerText = data.MSpanSys;
+                    document.getElementById('MCacheInuse').innerText = data.MCacheInuse;
+                    document.getElementById('MCacheSys').innerText = data.MCacheSys;
+                    document.getElementById('BuckHashSys').innerText = data.BuckHashSys;
+                    document.getElementById('GCSys').innerText = data.GCSys;
+                    document.getElementById('OtherSys').innerText = data.OtherSys;
+                    document.getElementById('NextGC').innerText = data.NextGC;
+                    document.getElementById('LastGC').innerText = data.LastGC;
+                    document.getElementById('PauseTotalNs').innerText = data.PauseTotalNs;
+                    document.getElementById('NumGC').innerText = data.NumGC;
+                    document.getElementById('NumForcedGC').innerText = data.NumForcedGC;
+                    document.getElementById('GCCPUFraction').innerText = data.GCCPUFraction;
+                });
+        }
+        setInterval(fetchStats, 5000); // Fetch stats every 5 seconds
+    </script>
+</head>
+<body>
+    <h1>Memory Dump Analyzer Dashboard</h1>
+    <table>
+        <thead>
+            <tr>
+                <th>Metric</th>
+                <th>Value</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr><td>Alloc</td><td id="Alloc"></td></tr>
+            <tr><td>TotalAlloc</td><td id="TotalAlloc"></td></tr>
+            <tr><td>Sys</td><td id="Sys"></td></tr>
+            <tr><td>Lookups</td><td id="Lookups"></td></tr>
+            <tr><td>Mallocs</td><td id="Mallocs"></td></tr>
+            <tr><td>Frees</td><td id="Frees"></td></tr>
+            <tr><td>HeapAlloc</td><td id="HeapAlloc"></td></tr>
+            <tr><td>HeapSys</td><td id="HeapSys"></td></tr>
+            <tr><td>HeapIdle</td><td id="HeapIdle"></td></tr>
+            <tr><td>HeapInuse</td><td id="HeapInuse"></td></tr>
+            <tr><td>HeapReleased</td><td id="HeapReleased"></td></tr>
+            <tr><td>HeapObjects</td><td id="HeapObjects"></td></tr>
+            <tr><td>StackInuse</td><td id="StackInuse"></td></tr>
+            <tr><td>StackSys</td><td id="StackSys"></td></tr>
+            <tr><td>MSpanInuse</td><td id="MSpanInuse"></td></tr>
+            <tr><td>MSpanSys</td><td id="MSpanSys"></td></tr>
+            <tr><td>MCacheInuse</td><td id="MCacheInuse"></td></tr>
+            <tr><td>MCacheSys</td><td id="MCacheSys"></td></tr>
+            <tr><td>BuckHashSys</td><td id="BuckHashSys"></td></tr>
+            <tr><td>GCSys</td><td id="GCSys"></td></tr>
+            <tr><td>OtherSys</td><td id="OtherSys"></td></tr>
+            <tr><td>NextGC</td><td id="NextGC"></td></tr>
+            <tr><td>LastGC</td><td id="LastGC"></td></tr>
+            <tr><td>PauseTotalNs</td><td id="PauseTotalNs"></td></tr>
+            <tr><td>NumGC</td><td id="NumGC"></td></tr>
+            <tr><td>NumForcedGC</td><td id="NumForcedGC"></td></tr>
+            <tr><td>GCCPUFraction</td><td id="GCCPUFraction"></td></tr>
+        </tbody>
+    </table>
+</body>
+</html>
