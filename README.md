@@ -1,4 +1,3 @@
-Sure, here's a clean and detailed README for the memory dump analyzer project:
 
 ## Memory Dump Analyzer
 
